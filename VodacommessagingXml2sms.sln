@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VodacommessagingXml2sms", "VodacommessagingXml2sms\VodacommessagingXml2sms.csproj", "{DAE316BA-5C6D-49FF-AA7A-1781F23CFCDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{3F813967-FFCD-4710-A4B1-CF3DE67A7C82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModels", "SharedModels\SharedModels.csproj", "{30D6AFBD-C7FC-45BC-BE82-DB11696C4110}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAE316BA-5C6D-49FF-AA7A-1781F23CFCDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE316BA-5C6D-49FF-AA7A-1781F23CFCDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE316BA-5C6D-49FF-AA7A-1781F23CFCDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE316BA-5C6D-49FF-AA7A-1781F23CFCDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F813967-FFCD-4710-A4B1-CF3DE67A7C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F813967-FFCD-4710-A4B1-CF3DE67A7C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F813967-FFCD-4710-A4B1-CF3DE67A7C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F813967-FFCD-4710-A4B1-CF3DE67A7C82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D6AFBD-C7FC-45BC-BE82-DB11696C4110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D6AFBD-C7FC-45BC-BE82-DB11696C4110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D6AFBD-C7FC-45BC-BE82-DB11696C4110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D6AFBD-C7FC-45BC-BE82-DB11696C4110}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {285620F2-2B29-4495-95F9-716CE9A7287A}
+	EndGlobalSection
+EndGlobal
