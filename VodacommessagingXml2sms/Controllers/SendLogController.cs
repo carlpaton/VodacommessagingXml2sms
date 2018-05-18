@@ -24,13 +24,19 @@ namespace VodacommessagingXml2sms.Controllers
         [HttpGet("{id}")]
         public string Get(string id)
         {
+            //TODO ~ add ILogger
+            System.Console.WriteLine("SendLog Request: {0}", id);
+
             _generateQueryString.Watermark = Convert.ToInt64(id);
             _generateUrl.Querystring = _generateQueryString.ForSendLog();
 
             _smsRequest.GenerateUrl = _generateUrl;
             _smsRequest.Authentication = _authentication;
+            var response = _smsRequest.SendLogResponse();
 
-            return _smsRequest.SendLogResponse();
+            //TODO ~ add ILogger
+            System.Console.WriteLine("SendLog Response: {0}", response);
+            return response;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SharedModels;
 using System.Collections.Generic;
 using VodacommessagingXml2sms.Interfaces;
@@ -25,13 +26,19 @@ namespace VodacommessagingXml2sms.Controllers
         [HttpPost]
         public string Post([FromBody]List<SmsModel> value)
         {
+            //TODO ~ add ILogger
+            System.Console.WriteLine("Send Request: {0}", JsonConvert.SerializeObject(value));
+
             _generateQueryString.SmsModel = value;
             _generateUrl.Querystring = _generateQueryString.ForSend();
 
             _smsRequest.GenerateUrl = _generateUrl;
             _smsRequest.Authentication = _authentication;
+            var response = _smsRequest.SendResponse();
 
-            return _smsRequest.SendResponse();
+            //TODO ~ add ILogger
+            System.Console.WriteLine("Send Response: {0}", response);
+            return response;
         }
     }
 }
