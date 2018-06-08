@@ -5,6 +5,7 @@ WORKDIR /app
 
 # Copy the project file and restore the dependencies
 COPY /VodacommessagingXml2sms/*.csproj ./
+COPY /SharedModels/*.csproj ./
 RUN dotnet restore
 
 
