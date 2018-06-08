@@ -31,5 +31,5 @@ RUN dotnet publish -c Release -o out
 # Build the runtime image
 FROM microsoft/aspnetcore:2.0
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build-env/app/out /app/out .
 ENTRYPOINT ["dotnet", "VodacommessagingXml2sms.dll"]
