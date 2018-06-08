@@ -1,6 +1,6 @@
 # Build image
 FROM microsoft/dotnet:2.0-sdk as builder 
-WORKDIR /sln  
+WORKDIR /app  
 COPY ./VodacommessagingXml2sms.sln ./
 
 # Copy all the csproj files and restore
@@ -25,4 +25,4 @@ FROM microsoft/aspnetcore:2.0
 WORKDIR /app  
 ENV ASPNETCORE_ENVIRONMENT Local  
 ENTRYPOINT ["dotnet", "VodacommessagingXml2sms.dll"] 
-COPY --from=builder out app
+COPY --from=builder /app/out .
