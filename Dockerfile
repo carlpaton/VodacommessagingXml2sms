@@ -25,4 +25,4 @@ FROM microsoft/aspnetcore:2.0
 WORKDIR /app  
 ENV ASPNETCORE_ENVIRONMENT Local  
 ENTRYPOINT ["dotnet", "VodacommessagingXml2sms.dll"] 
-COPY --from=builder /app/out .
+COPY --from=builder /app/VodacommessagingXml2sms/out .
