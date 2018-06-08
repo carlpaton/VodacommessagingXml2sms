@@ -20,6 +20,7 @@ WORKDIR /app
 COPY SharedModels/*.* SharedModels/
 COPY VodacommessagingXml2sms/*.* VodacommessagingXml2sms/
 COPY VodacommessagingXml2sms/Interfaces/*.* VodacommessagingXml2sms/Interfaces/
+COPY VodacommessagingXml2sms/Services/*.* VodacommessagingXml2sms/Services/
 
 
 # Publish the app
