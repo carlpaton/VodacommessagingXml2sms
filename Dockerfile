@@ -3,14 +3,26 @@ FROM microsoft/dotnet:2.0-sdk as build-env
 WORKDIR /app
 
 
-# Copy the project file and restore the dependencies
-COPY /VodacommessagingXml2sms/*.csproj ./
-COPY /SharedModels/*.csproj ./
+# Copy the project files
+COPY /SharedModels/*.csproj SharedModels/
+COPY /VodacommessagingXml2sms/*.csproj VodacommessagingXml2sms/
+
+
+# Restore all the dependencies
+WORKDIR /app/SharedModels
+RUN dotnet restore
+WORKDIR /app/VodacommessagingXml2sms
 RUN dotnet restore
 
 
-# Copy the remaining source files and build the application
-COPY . ./
+# Now copy all the remaining files
+WORKDIR /app
+COPY SharedModels/*.* SharedModels/
+COPY VodacommessagingXml2sms/*.* VodacommessagingXml2sms/
+
+
+# Publish the app
+WORKDIR /app/VodacommessagingXml2sms
 RUN dotnet publish -c Release -o out
 
 
