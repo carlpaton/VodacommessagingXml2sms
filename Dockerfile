@@ -19,6 +19,7 @@ RUN dotnet restore
 WORKDIR /app
 COPY SharedModels/*.* SharedModels/
 COPY VodacommessagingXml2sms/*.* VodacommessagingXml2sms/
+COPY VodacommessagingXml2sms/Interfaces/*.* VodacommessagingXml2sms/Interfaces/
 
 
 # Publish the app
