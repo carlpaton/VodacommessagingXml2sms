@@ -9,11 +9,13 @@ COPY /VodacommessagingXml2sms/*.csproj VodacommessagingXml2sms/
 COPY /Tests/*.csproj Tests/
 RUN dotnet restore
 
-COPY SharedModels/*.* SharedModels/
-COPY VodacommessagingXml2sms/*.* VodacommessagingXml2sms/
-COPY VodacommessagingXml2sms/Interfaces/*.* VodacommessagingXml2sms/Interfaces/
-COPY VodacommessagingXml2sms/Services/*.* VodacommessagingXml2sms/Services/ 
+COPY ./SharedModels ./SharedModels
+COPY ./VodacommessagingXml2sms ./VodacommessagingXml2sms
+COPY ./Tests ./Tests
+
 RUN dotnet build -c Release --no-restore
+
+#RUN dotnet test "./Tests/Tests.csproj" -c Release --no-build --no-restore
 
 RUN dotnet publish "./VodacommessagingXml2sms/VodacommessagingXml2sms.csproj" -c Release -o "../../dist" --no-restore
 
