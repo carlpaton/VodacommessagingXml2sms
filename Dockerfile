@@ -15,7 +15,7 @@ COPY VodacommessagingXml2sms/Interfaces/*.* VodacommessagingXml2sms/Interfaces/
 COPY VodacommessagingXml2sms/Services/*.* VodacommessagingXml2sms/Services/ 
 RUN dotnet build -c Release --no-restore
 
-RUN dotnet publish "./VodacommessagingXml2sms/VodacommessagingXml2sms.csproj" -c Release -o "dist" --no-restore
+RUN dotnet publish "./VodacommessagingXml2sms/VodacommessagingXml2sms.csproj" -c Release -o "../../dist" --no-restore
 
 #Build the app image
 FROM microsoft/aspnetcore:2.0  
