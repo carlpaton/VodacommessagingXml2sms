@@ -6,6 +6,7 @@ COPY ./VodacommessagingXml2sms.sln ./
 # Copy all the csproj files and restore
 COPY /SharedModels/*.csproj SharedModels/
 COPY /VodacommessagingXml2sms/*.csproj VodacommessagingXml2sms/
+COPY /Tests/*.csproj Tests/
 RUN dotnet restore
 
 COPY SharedModels/*.* SharedModels/
