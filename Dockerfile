@@ -17,7 +17,6 @@ RUN dotnet build -c Release --no-restore
 
 #RUN dotnet test "./Tests/Tests.csproj" -c Release --no-build --no-restore
 
-#RUN dotnet publish "./VodacommessagingXml2sms/VodacommessagingXml2sms.csproj" -c Release -o "../../dist" --no-restore
 RUN dotnet publish -c Release -o out
 
 #Build the app image

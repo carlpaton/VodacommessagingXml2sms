@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using VodacommessagingXml2sms.Interfaces;
 using VodacommessagingXml2sms.Services;
 
@@ -29,9 +30,13 @@ namespace VodacommessagingXml2sms
             //Scoped objects are the same within a request, but different across different requests
             //Singleton objects are the same for every object and every request (regardless of whether an instance is provided in ConfigureServices)
 
-            services.AddTransient<IAuthentication>(sp => new Authentication(appSettings["AppSettings:Username"], appSettings["AppSettings:Password"]));
+            var userName = (appSettings["AppSettings:Username"] == "" ? Environment.GetEnvironmentVariable("USERNAME_ENVIRONMENT") : appSettings["AppSettings:Username"]);
+            var password = (appSettings["AppSettings:Password"] == "" ? Environment.GetEnvironmentVariable("PASSWORD_ENVIRONMENT") : appSettings["AppSettings:Password"]);
+            var gateway = (appSettings["AppSettings:SmsGateway"] == "" ? Environment.GetEnvironmentVariable("SMSGW_ENVIRONMENT") : appSettings["AppSettings:SmsGateway"]);
+
+            services.AddTransient<IAuthentication>(sp => new Authentication(userName, password));
             services.AddTransient<IGenerateQueryString>(sp => new GenerateQueryString());
-            services.AddTransient<IGenerateUrl>(sp => new GenerateUrl(appSettings["AppSettings:SmsGateway"]));
+            services.AddTransient<IGenerateUrl>(sp => new GenerateUrl(gateway));
             services.AddTransient<ISmsRequest>(sp => new SmsRequest(appSettings["AppSettings:ReponseType"]));
 
             services.AddMvc();
