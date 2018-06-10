@@ -33,11 +33,15 @@ namespace VodacommessagingXml2sms
             var userName = (appSettings["AppSettings:Username"] == "" ? Environment.GetEnvironmentVariable("USERNAME_ENVIRONMENT") : appSettings["AppSettings:Username"]);
             var password = (appSettings["AppSettings:Password"] == "" ? Environment.GetEnvironmentVariable("PASSWORD_ENVIRONMENT") : appSettings["AppSettings:Password"]);
             var gateway = (appSettings["AppSettings:SmsGateway"] == "" ? Environment.GetEnvironmentVariable("SMSGW_ENVIRONMENT") : appSettings["AppSettings:SmsGateway"]);
+            var responseType = (appSettings["AppSettings:ReponseType"] == "" ? Environment.GetEnvironmentVariable("RESPONSETYPE_ENVIRONMENT") : appSettings["AppSettings:ReponseType"]);
+
+            //TODO ~ implement the use of mock mode, this to mock the sms gateways response to allow the developer to build their application that will call this docker container to send SMS
+            var mockMode = (appSettings["AppSettings:MockMode"] == "" ? Environment.GetEnvironmentVariable("MOCKMODE_ENVIRONMENT") : appSettings["AppSettings:MockMode"]);
 
             services.AddTransient<IAuthentication>(sp => new Authentication(userName, password));
             services.AddTransient<IGenerateQueryString>(sp => new GenerateQueryString());
             services.AddTransient<IGenerateUrl>(sp => new GenerateUrl(gateway));
-            services.AddTransient<ISmsRequest>(sp => new SmsRequest(appSettings["AppSettings:ReponseType"]));
+            services.AddTransient<ISmsRequest>(sp => new SmsRequest(responseType));
 
             services.AddMvc();
         }
