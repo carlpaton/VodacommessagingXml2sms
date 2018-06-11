@@ -17,10 +17,12 @@ namespace Tests.ControllerTests
                 injectOptions.Authentication,
                 injectOptions.GenerateQueryString,
                 injectOptions.GenerateUrl,
-                injectOptions.SmsRequest);
+                injectOptions.SmsRequest,
+                injectOptions.SmsLogger);
 
             // Arrange
             string waterMark = "201342443";
+            waterMark = "247";
             var response = controller.Get(waterMark);
 
             // Assert

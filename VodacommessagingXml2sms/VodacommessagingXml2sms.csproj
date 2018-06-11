@@ -28,10 +28,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="env_file_name.env">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

@@ -10,6 +10,7 @@ namespace Tests.DI
         public IGenerateQueryString GenerateQueryString { get; private set; }
         public IGenerateUrl GenerateUrl { get; private set; }
         public ISmsRequest SmsRequest { get; private set; }
+        public ISmsLogger SmsLogger { get; private set; }
 
         public InjectOptions()
         {
@@ -21,11 +22,13 @@ namespace Tests.DI
             GenerateQueryString = new GenerateQueryString();
             GenerateUrl = new GenerateUrl(appSettings["AppSettings:SmsGateway"]);
 
-            SmsRequest = new SmsRequest(appSettings["AppSettings:ReponseType"])
+            SmsRequest = new SmsRequest(appSettings["AppSettings:ReponseType"], appSettings["AppSettings:MockMode"])
             {
                 GenerateUrl = GenerateUrl,
                 Authentication = Authentication
             };
+
+            SmsLogger = new SmsLogger();
         }
     }
 }

@@ -20,7 +20,8 @@ namespace Tests.ControllerTests
                 injectOptions.Authentication, 
                 injectOptions.GenerateQueryString, 
                 injectOptions.GenerateUrl,
-                injectOptions.SmsRequest);
+                injectOptions.SmsRequest,
+                injectOptions.SmsLogger);
 
             // Arrange
             var body = new List<SmsModel>
@@ -44,7 +45,8 @@ namespace Tests.ControllerTests
                 injectOptions.Authentication,
                 injectOptions.GenerateQueryString,
                 injectOptions.GenerateUrl,
-                injectOptions.SmsRequest);
+                injectOptions.SmsRequest,
+                injectOptions.SmsLogger);
 
             // Arrange
             var body = new List<SmsModel>

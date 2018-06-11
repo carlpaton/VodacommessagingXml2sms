@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using SharedModels;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Xml;
@@ -12,26 +14,48 @@ namespace VodacommessagingXml2sms.Services
         public IGenerateUrl GenerateUrl { get; set; }
         public IAuthentication Authentication { get; set; }
 
-        string _responseType;
+        readonly string _responseType;
+        readonly string _mockMode;
 
-        public SmsRequest(string responseType = "")
+        #region only used with mocking
+        public List<SmsModel> SmsModel { get; set; }
+        public string WaterMarkId { get; set; }
+        #endregion
+
+        public SmsRequest(string responseType = "", string mockMode = "0")
         {
             _responseType = responseType;
+            _mockMode = mockMode;
         }
 
         public string SendResponse()
         {
-            var apiReponse = DoWebRequest(GenerateUrl.GenerateSend());
+            var apiReponse = "";
+
+            if (_mockMode.Equals("0"))
+                apiReponse = DoWebRequest(GenerateUrl.GenerateSend());
+
+            if (_mockMode.Equals("1")) //mock request
+                apiReponse = Mocking.MockSmsRequest.MockSendResponse(SmsModel);
+
             return FormatResponse(apiReponse);
         }
 
         public string SendLogResponse()
         {
-            var apiReponse = DoWebRequest(GenerateUrl.GenerateSendLog());
+            var apiReponse = "";
+
+            if (_mockMode.Equals("0"))
+                apiReponse = DoWebRequest(GenerateUrl.GenerateSendLog());
+
+            if (_mockMode.Equals("1")) //mock request
+                apiReponse = Mocking.MockSmsRequest.MockSendLogResponse(WaterMarkId);
+
             return FormatResponse(apiReponse);
         }
 
         #region helpers
+
         string DoWebRequest(string url)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
