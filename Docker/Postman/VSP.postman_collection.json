@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "a8ee5e56-ca29-4894-b671-a5f0167d5f49",
+		"name": "VSP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "VSP Send",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"Number\": \"27834325919\",\"Message\": \"postman test 1234\"}]"
+				},
+				"url": {
+					"raw": "http://localhost:54574/api/send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54574",
+					"path": [
+						"api",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VSP SendLog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:54574/api/sendlog/200707882",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54574",
+					"path": [
+						"api",
+						"sendlog",
+						"200707882"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
