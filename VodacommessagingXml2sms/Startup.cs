@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
 using VodacommessagingXml2sms.Interfaces;
 using VodacommessagingXml2sms.Services;
@@ -44,6 +45,12 @@ namespace VodacommessagingXml2sms
             services.AddTransient<ISmsLogger>(sp => new SmsLogger());
 
             services.AddMvc();
+
+            //Swashbuckle (Swagger)
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Vodacommessaging Xml2sms", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +62,15 @@ namespace VodacommessagingXml2sms
             }
 
             app.UseMvc();
+
+            //In the Configure method, insert middleware to expose the generated Swagger as JSON endpoint(s)
+            app.UseSwagger();
+
+            //Optionally insert the swagger-ui middleware if you want to expose interactive documentation, specifying the Swagger JSON endpoint(s) to power it from.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Vodacommessaging Xml2sms V1");
+            });
         }
     }
 }

@@ -6,6 +6,9 @@ using VodacommessagingXml2sms.Interfaces;
 
 namespace VodacommessagingXml2sms.Controllers
 {
+    /// <summary>
+    /// SendController
+    /// </summary>
     [Route("api/[controller]")]
     public class SendController : Controller
     {
@@ -24,7 +27,13 @@ namespace VodacommessagingXml2sms.Controllers
             _logger = logger;
         }
 
-        // POST api/send
+        /// <summary>
+        /// Post a list of SmsModel to the SMS Gateway
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>
+        /// Example: {"?xml":{"@version":"1.0"},"aatsms":{"submitresult":{"@action":"enqueued","@key":"205967615","@result":"1","@number":"27834325919"}}}
+        /// </returns>
         [HttpPost]
         public string Post([FromBody]List<SmsModel> value)
         {
